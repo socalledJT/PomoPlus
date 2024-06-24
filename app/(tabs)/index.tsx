@@ -1,5 +1,6 @@
-import { Image, StyleSheet, Platform, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, Platform, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -9,6 +10,21 @@ import { ThemedText } from '@/components/ThemedText';
 import { Buttons } from '@/constants/Buttons';
 
 export default function HomeScreen() {
+  const scrollViewRef = useRef<ScrollView>(null); // Explicitly define the type
+  const [buttonWidth, setButtonWidth] = useState(0);
+
+  useEffect(() => {
+    if (buttonWidth) {
+      // Calculate offset to scroll to the middle button
+      const screenWidth = Dimensions.get('window').width;
+      const middleButtonOffset = (buttonWidth * 2) - (screenWidth / 2 - buttonWidth / 2);
+
+      if (scrollViewRef.current) {
+        scrollViewRef.current.scrollTo({ x: 250, animated: true });
+      }
+    }
+  }, [buttonWidth]);
+
   return (
     <ThemedSafeAreaView style={styles.areaContainer}>
       <TouchableOpacity style={Buttons.smallButton}>
@@ -32,15 +48,17 @@ export default function HomeScreen() {
       </ThemedView>
 
       <ThemedView style={styles.timerContainer}>
-      <TouchableOpacity style={Buttons.workButton}>
-          Start Work
-        </TouchableOpacity>
-        <TouchableOpacity style={Buttons.workButton}>
-          Start Work
-        </TouchableOpacity>
-        <TouchableOpacity style={Buttons.workButton}>
-          Start Work
-        </TouchableOpacity>
+        <ScrollView horizontal={true}  ref={scrollViewRef}>
+          <TouchableOpacity style={Buttons.timerClicable}>
+            Start Work
+          </TouchableOpacity>
+          <TouchableOpacity style={Buttons.timerClicable}>
+            Start Work
+          </TouchableOpacity>
+          <TouchableOpacity style={Buttons.timerClicable}>
+            Start Work
+          </TouchableOpacity>
+        </ScrollView>
       </ThemedView>
     </ThemedSafeAreaView>
   );
@@ -79,6 +97,7 @@ const styles = StyleSheet.create({
   bigButtonContainer: {
     width: '100%',
     height: '10%',
+    marginTop: 50,
     // align the text of the button in the center
     alignItems: 'center',
     justifyContent: 'center',
@@ -95,11 +114,13 @@ const styles = StyleSheet.create({
   },
   timerContainer: {
     width: '100%',
-    height: '50%',
+    height: '30%',
+    marginTop: 150,
     // align the text of the button in the center
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: "row",
 
-    backgroundColor: '#000'    // Used for styiling
+    // backgroundColor: '#000'    // Used for styiling
   },
 });

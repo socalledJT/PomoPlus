@@ -43,5 +43,19 @@ export const Buttons = StyleSheet.create({
         // align the text of the button in the center
         alignItems: 'center',
         justifyContent: 'center'
+      },
+      timerClicable: {
+        width: 200,
+        height: 125,
+
+        padding: 15,
+
+        borderRadius: 20,
+        backgroundColor: '#112522',
+        color: '#fff',
+        margin: 20,
+
+        // Fixing text size
+        fontSize: 14,
       }
 })
