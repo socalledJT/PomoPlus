@@ -10,6 +10,7 @@ import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
 import { Buttons } from '@/constants/Buttons';
 import { router } from 'expo-router';
+import { AreaContainers } from '@/constants/AreaContainers';
 
 // const convertMinutesToTime = (minutes: number) => {
 //   const hrs = Math.floor(minutes / 60);
@@ -35,13 +36,13 @@ export default function HomeScreen() {
   const convertedTimes = convertMinutesArrayToTime(minutesArray);
 
   return (
-    <ThemedSafeAreaView style={styles.areaContainer}>
+    <ThemedSafeAreaView style={AreaContainers.backgroundContainer}>
       <TouchableOpacity style={Buttons.smallButton} onPress={() => {
         router.push('../screens/settings');
       }}>
         <Ionicons style={Buttons.icon} name="settings-outline" size={24} color="#FFFFFF" />
       </TouchableOpacity>
-      <ThemedView style={styles.buttonContainer}>
+      <ThemedView style={AreaContainers.buttonContainer}>
         <TouchableOpacity style={Buttons.workButton}>
           Start Work
         </TouchableOpacity>
@@ -88,35 +89,6 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  areaContainer: {
-    height: '100%',
-    width: '100%'
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-  buttonContainer: {
-    width: '100%',
-    height: '20%',
-    // align the text of the button in the center
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    // backgroundColor: '#000'    // Used for styiling
-  },
   bigButtonContainer: {
     width: '100%',
     height: '10%',

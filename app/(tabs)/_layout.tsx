@@ -25,7 +25,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: '',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'planet' : 'planet-outline'} color={color} />
           ),
@@ -34,7 +34,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="explore"
         options={{
-          title: 'Work',
+          title: '',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'list-circle' : 'list-circle-outline'} color={color} />
           ),
@@ -44,7 +44,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="time-blocks"
         options={{
-          title: 'Time-Blocks',
+          title: '',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'timer' : 'timer-outline'} color={color} />
           ),
@@ -53,7 +53,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'Profile',
+          title: '',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'person-circle' : 'person-circle-outline'} color={color} />
           ),
